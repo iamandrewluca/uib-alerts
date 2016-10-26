@@ -11,7 +11,6 @@ angular.module('ui.bootstrap.demo').controller('AlertDemoCtrl', function ($scope
       id: 'success',
       type: 'success',
       msg: 'Well done! You successfully read this important alert message.',
-      timeout: 3000,
       close: false
     },
     {

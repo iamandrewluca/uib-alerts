@@ -10,6 +10,15 @@ angular.module('ui.bootstrap.alerts', ['ui.bootstrap.alert'])
   
   $scope.addAlert = function(alert) {
     
+    var alertTimeout = $scope.timeout;
+    if (alert.timeout && alert.timeout > 0) {
+      alertTimeout = alert.timeout;
+    }
+    
+    if (!alertTimeout) {
+      alert.close = true;
+    }
+    
     if ($scope.alerts[alert.id]) {
       
       var timeout = $scope.timeouts[alert.id];
@@ -21,8 +30,8 @@ angular.module('ui.bootstrap.alerts', ['ui.bootstrap.alert'])
       $scope.alerts[alert.id] = alert; 
     }
     
-    if (alert.timeout && alert.timeout > 0) {
-      $scope.timeouts[alert.id] = $timeout($scope.closeAlert, alert.timeout, true, alert.id);
+    if (alertTimeout) {
+      $scope.timeouts[alert.id] = $timeout($scope.closeAlert, alertTimeout, true, alert.id);
     }
   }
   
@@ -46,7 +55,9 @@ angular.module('ui.bootstrap.alerts', ['ui.bootstrap.alert'])
     controllerAs: 'alerts',
     restrict: 'A',
     templateUrl: 'alerts.html',
-    scope: {},
+    scope: {
+      timeout: '<'
+    },
     transclude: true
   };
 });
