@@ -10,8 +10,7 @@ angular.module('ui.bootstrap.demo').controller('AlertDemoCtrl', function ($scope
     },{
       id: 'success',
       type: 'success',
-      msg: 'Well done! You successfully read this important alert message.',
-      close: false
+      msg: 'Well done! You successfully read this important alert message.'
     },
     {
       id: 'jora',

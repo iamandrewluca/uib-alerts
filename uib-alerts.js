@@ -15,7 +15,7 @@ angular.module('ui.bootstrap.alerts', ['ui.bootstrap.alert'])
       alertTimeout = alert.timeout;
     }
     
-    if (!alertTimeout) {
+    if ($scope.close || !alertTimeout) {
       alert.close = true;
     }
     
@@ -56,7 +56,8 @@ angular.module('ui.bootstrap.alerts', ['ui.bootstrap.alert'])
     restrict: 'A',
     templateUrl: 'alerts.html',
     scope: {
-      timeout: '<'
+      timeout: '<',
+      close: '<'
     },
     transclude: true
   };
