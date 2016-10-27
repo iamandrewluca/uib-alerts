@@ -24,7 +24,7 @@ angular.module('ui.bootstrap.demo').controller('AlertDemoCtrl', function ($scope
   $scope.count = 0
   
   $scope.addAlert = function() {
-    $scope.$broadcast('uib.alerts.add', $scope.alerts[$scope.count++]);
+    $scope.$broadcast('uib.alerts.add.j' + $scope.count, $scope.alerts[$scope.count++]);
     if ($scope.count > 2) {
       $scope.count = 0;
     }

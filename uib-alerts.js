@@ -4,7 +4,14 @@ angular.module('ui.bootstrap.alerts', ['ui.bootstrap.alert'])
   $scope.timeouts = {};
   $scope.alerts = {};
   
-  $scope.$on('uib.alerts.add', function(event, alert) {
+  var eventId;
+  if ($attrs.id) {
+    eventId = 'uib.alerts.add' + '.' + $attrs.id;
+  } else {
+    eventId = 'uib.alerts.add';
+  }
+  
+  $scope.$on(eventId, function(event, alert) {
     $scope.addAlert(alert);
   });
   
